@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Awesome web ;D</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script src="js/bootstrap.bundle.js"></script>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        color: white;
+      }
+
+      canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .container-fluid {
+        position: relative; /* Ensures the container remains above the canvas */
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="rainCanvas"></canvas>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col text-center">MY PROFILE</div>
+      </div>
+      <div class="row">
+        <div class="col-10">
+          <div class="row">
+            <div class="col-xs-12 col-md-4">
+              <img src="images/DarkLink.jpg" />
+            </div>
+            <div class="col-xs-12 col-md-8">Brief description</div>
+          </div>
+        </div>
+
+        <div class="col-2 align-items-center" style="border: 1px solid green">
+          Other links ～
+
+          <ul style="list-style-type: '★'">
+            <li>Resume</li>
+            <li>YouTube</li>
+            <li>Github</li>
+            <li>Nekoweb</li>
+            <li>LinkedIn</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <canvas id="rainCanvas"></canvas>
+    <script>
+      const canvas = document.getElementById("rainCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // Resize canvas to cover the viewport
+      const resizeCanvas = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      };
+
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+
+      const fontSize = 16;
+      const columns = Math.floor(canvas.width / fontSize);
+      const drops = Array(columns).fill(1);
+
+      const draw = () => {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "lime";
+        ctx.font = `${fontSize}px monospace`;
+
+        for (let i = 0; i < drops.length; i++) {
+          const text = String.fromCharCode(33 + Math.random() * 94);
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+
+          drops[i]++;
+        }
+      };
+
+      setInterval(draw, 33);
+    </script>
+  </body>
+</html>

@@ -3,9 +3,29 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Awesome web ;D</title>
+    <title>Denylito's den ;D</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <script src="js/bootstrap.bundle.js"></script>
+
+    <style>
+      /* Prevent focus outline glow */
+      a:focus {
+        outline: none;
+      }
+
+      /* Optional: Customize hover or active state */
+      a:hover,
+      a:active {
+        text-decoration: none; /* Or any style you prefer */
+      }
+
+      /* Optional: Style for the link itself */
+      a {
+        color: white; /* Example: Set your preferred color */
+        text-decoration: none; /* Remove underline if needed */
+      }
+    </style>
+
     <style>
       body,
       html {
@@ -35,11 +55,18 @@
     <canvas id="rainCanvas"></canvas>
     <div class="container-fluid">
       <div class="row">
-        <div class="col text-center">MY PROFILE</div>
+        <div class="col text-center">Cozy cove ～</div>
       </div>
-      <div class="row flex-wrap">
-        <!-- Profile and Description -->
+      <div class="row">
+        <!-- Main Content Section -->
         <div class="col-lg-10 col-md-9 col-sm-12">
+          <!-- Profile Picture and Details Heading -->
+          <div class="row">
+            <div class="col-12">
+              <h3 class="mt-3">Denyl's Den</h3>
+            </div>
+          </div>
+
           <div class="row">
             <div class="col-12">
               <img
@@ -53,30 +80,77 @@
                 alt="Profile Picture"
               />
               <p>
-                This is a brief description about me. Text will wrap around the
-                image if it overflows, creating a visually appealing layout. You
-                can add more content here to see the effect.
+                Hey, I'm Denyl! I'm a guy who played tons of videogames and
+                studied computer science, although web development was never my
+                passion :P I did love assembly language / MIPS though! As well
+                as algorithms and data structures course! I made this website
+                out primarily to have something where I can share who I am as a
+                person, kind of a mini blog or autobiography. Mostly for fun,
+                and for myself, to get to know me better as a person and not
+                forget who I am and what I've done :P I took the inspiration
+                from the developer of
+                <a href="https://nekoweb.org/">Nekoweb</a> site, except... I
+                used bootstrap to do mine, since today websites are usually
+                mobile first :P
               </p>
+              <p>Anyway, about me:</p>
+              <ul class="list-unstyled mt-3">
+                <li>♪ I'm from Venezuela, living in USA.</li>
+                <li>
+                  ♪ Python is my fav programming language, along with MIPS. I
+                  never liked Haskell :P.
+                </li>
+                <li>♪ I love the night and the stars.</li>
+                <li>
+                  ♪ I love the horizontal position, as in, lying flat in bed :P.
+                </li>
+                <li>♪ I cosplay! But I don't make my own costumes~</li>
+                <li>
+                  ♪ Unlike Pluto / Like Saturn is my fav artist, but I've
+                  listened to a ton of genres.
+                </li>
+                <li>
+                  ♪ My favorite color is shades of
+                  <font color="purple">purple</font>.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- New Canvas Section -->
+          <div class="row">
+            <div class="col-12">
+              <h3 class="mt-3">My list of games, anime, music, etc. :3!</h3>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-12">
+              <ul class="list-unstyled mt-3">
+                <li><a href="games.html">★ Games.</a></li>
+                <li><a href="anime.html">★ Animes.</a></li>
+                <li><a href="music.html">★ Music Albums & Artists.</a></li>
+              </ul>
             </div>
           </div>
         </div>
 
-        <!-- Other Links -->
+        <!-- Other Links Section -->
         <div
           class="col-lg-2 col-md-3 col-sm-12 p-3"
-          style="border: 1px solid green"
+          style="border: 1px solid white; height: fit-content"
         >
           <div class="text-center">Other links ～</div>
           <ul class="list-unstyled mt-3">
             <li>★ Resume</li>
-            <li>★ YouTube</li>
-            <li>★ Github</li>
-            <li>★ Nekoweb</li>
-            <li>★ LinkedIn</li>
+            <li><a href="https://www.youtube.com/@DenylR/">★ YouTube</a></li>
+            <li><a href="https://github.com/denylr/">★ Github</a></li>
+            <li><a href="https://denyl.nekoweb.org/">★ Nekoweb</a></li>
+            <li><a href="https://www.linkedin.com/in/denyl/">★ LinkedIn</a></li>
           </ul>
         </div>
       </div>
     </div>
+
     <canvas id="rainingCanvas"></canvas>
     <script>
       const canvas = document.getElementById("rainingCanvas");
@@ -156,6 +230,29 @@
       });
 
       draw();
+    </script>
+
+    <script>
+      let c = false;
+      document.body.onclick = () => {
+        if (c) return; // Prevent multiple triggers
+        c = true;
+        setTimeout(() => {
+          var a = new Audio("/LikeSaturn_HollowedOut.mp3");
+          a.loop = true; // Enable looping
+          a.play();
+          a.volume = 0;
+
+          // Fade-in effect
+          let fadein = setInterval(() => {
+            if (a.volume < 0.9) {
+              a.volume += 0.05;
+            } else {
+              clearInterval(fadein); // Stop the fade-in process once max volume is reached
+            }
+          }, 100);
+        }, 100);
+      };
     </script>
   </body>
 </html>

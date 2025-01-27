@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stylized Text Effects</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #121212; /* Dark background for contrast */
+        font-family: Arial, sans-serif;
+      }
+
+      .styled-text {
+        font-size: 3rem;
+        font-weight: bold;
+        color: white; /* Base text color */
+        position: relative;
+        animation: textDisappear 3s infinite alternate;
+      }
+
+      /* Reflection Effect */
+      .styled-text::after {
+        content: "Customizable 3D Text"; /* Same text as the original */
+        position: absolute;
+        top: 95%; /* Bring reflection closer to the text */
+        left: 0;
+        right: 0;
+        opacity: 0.2; /* Dimmer reflection */
+        transform: scaleY(-1);
+        animation: textDisappearReflection 3s infinite alternate; /* Apply fade effect to reflection */
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 85%);
+      }
+
+      /* Text Disappear/Reappear Animation */
+      @keyframes textDisappear {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      /* Reflection Disappear/Reappear Animation */
+      @keyframes textDisappearReflection {
+        0% {
+          opacity: 0.2; /* Start dim */
+        }
+        100% {
+          opacity: 0.8; /* Fade out completely */
+        }
+      }
+
+      /* Hover Effect */
+      .styled-text:hover {
+        color: white; /* Ensure text stays white on hover */
+        animation: none; /* Stop animation on hover */
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+          0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4); /* Glowing effect */
+      }
+
+      .styled-text:hover::after {
+        color: white; /* Ensure reflection stays white on hover */
+        animation: none; /* Stop animation on hover */
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+          0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4); /* Glowing effect on reflection */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="styled-text">Customizable 3D Text</div>
+  </body>
+</html>

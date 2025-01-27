@@ -50,13 +50,71 @@
         position: relative; /* Ensures the container remains above the canvas */
         z-index: 1;
       }
+
+      .styled-text {
+        font-size: 3rem;
+        font-weight: bold;
+        color: white; /* Base text color */
+        position: relative;
+        animation: textDisappear 3s infinite alternate;
+      }
+
+      /* Reflection Effect */
+      .styled-text::after {
+        content: "Mah Home～"; /* Same text as the original */
+        position: absolute;
+        top: 95%; /* Bring reflection closer to the text */
+        left: 0;
+        right: 0;
+        opacity: 0.2; /* Dimmer reflection */
+        transform: scaleY(-1);
+        animation: textDisappearReflection 3s infinite alternate; /* Apply fade effect to reflection */
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 85%);
+      }
+
+      /* Text Disappear/Reappear Animation */
+      @keyframes textDisappear {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      /* Reflection Disappear/Reappear Animation */
+      @keyframes textDisappearReflection {
+        0% {
+          opacity: 0.2; /* Start dim */
+        }
+        100% {
+          opacity: 0.8; /* Fade out completely */
+        }
+      }
+
+      /* Hover Effect */
+      .styled-text:hover {
+        color: white; /* Ensure text stays white on hover */
+        animation: none; /* Stop animation on hover */
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+          0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4); /* Glowing effect */
+      }
+
+      .styled-text:hover::after {
+        color: white; /* Ensure reflection stays white on hover */
+        animation: none; /* Stop animation on hover */
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+          0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4); /* Glowing effect on reflection */
+      }
     </style>
   </head>
   <body>
     <canvas id="rainCanvas"></canvas>
     <div class="container-fluid">
       <div class="row">
-        <div class="col text-center">Cozy cove ～</div>
+        <div class="col text-center styled-text">
+          <a href="https://denylr.github.io">Mah Home～</a>
+        </div>
       </div>
       <div class="row">
         <!-- Main Content Section -->
@@ -71,7 +129,7 @@
           <div class="row">
             <div class="col-12">
               <img
-                src="images/DarkLink.jpg"
+                src="images/Mii.png"
                 style="
                   float: left;
                   margin-right: 15px;
